@@ -1,0 +1,91 @@
+\documentclass{ximera}
+
+\title{Project 3}
+\author{Blessing Adewoye}
+
+\begin{document}
+\begin{abstract}
+    Now we describe
+\end{abstract}
+\maketitle
+
+
+\section*{Problem 1: Reflection across the x-axis}
+
+Reflecting across the $x$-axis leaves the $x$-value unchanged while reversing the sign of the $y$-value.  
+This transformation can be written as
+\[
+(x,y) \rightarrow (x,-y).
+\]
+
+The corresponding matrix is
+\[
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}.
+\]
+
+\section*{Problem 2: Rotation by $60^\circ$ counterclockwise}
+
+A rotation about the origin by an angle $\theta$ is given by the matrix
+\[
+\begin{bmatrix}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{bmatrix}.
+\]
+
+For $\theta = 60^\circ$, we substitute the known values
+\[
+\cos 60^\circ = \frac{1}{2}, \qquad \sin 60^\circ = \frac{\sqrt{3}}{2}.
+\]
+
+This gives
+\[
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}.
+\]
+
+\section*{Problem 3: Reflection across a line at $60^\circ$}
+
+The matrix for reflecting across a line that makes an angle $\theta$ with the $x$-axis is
+\[
+\begin{bmatrix}
+\cos(2\theta) & \sin(2\theta) \\
+\sin(2\theta) & -\cos(2\theta)
+\end{bmatrix}.
+\]
+
+Since the angle is $60^\circ$, we use $2\theta = 120^\circ$:
+
+\[
+\begin{bmatrix}
+\cos 120^\circ & \sin 120^\circ \\
+\sin 120^\circ & -\cos 120^\circ
+\end{bmatrix}.
+\]
+
+Evaluating the trigonometric values:
+\[
+\cos 120^\circ = -\frac{1}{2}, \qquad \sin 120^\circ = \frac{\sqrt{3}}{2}.
+\]
+
+So the reflection matrix is
+\[
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}.
+\]
+
+\section*{Explanation}
+
+To find this matrix, I used the standard reflection formula for a line through the origin. Because the line forms a $60^\circ$ angle with the $x$-axis, I substituted $\theta = 60^\circ$ into the formula. Since the formula depends on $2\theta$, I evaluated everything at $120^\circ$. After computing the sine and cosine values, I obtained the final matrix.
+
+
+
+
+\end{document}
