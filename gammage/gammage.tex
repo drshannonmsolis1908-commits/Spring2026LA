@@ -1,0 +1,324 @@
+\documentclass{ximera}
+
+\title{Project 3: Gammage}
+\author{Gammage}
+
+\begin{document}
+\begin{abstract}
+    Gammage Kaledioscope Project 3
+\end{abstract}
+\maketitle
+
+\section*{Overview}
+The goal of this project is to use the power of matrices and linear transformations to build a virtual kaleidoscope.  
+
+\begin{center}
+
+\section*{Virtual Kaleidoscopes}
+\vskip 0.125in
+\includegraphics[width = 2.5in]{start.jpg} \ \ \  \includegraphics[width = 2.5in]{finish.jpg}
+\end{center}
+
+A physical kaleidoscope\footnote{There are many different kinds of kaleidoscopes.  This is just one example.} starts with a pie-shaped image like the one on the left above.  Two mirrors are held perpendicular to the paper with the image.  One mirror is held above the horizontal edge of the image and the other is held above the angled edge of the image.  The two edges and, thus, the two mirrors meet in a $60^{\circ}$ angle.  The horizontal mirror alone would produce the reflection on the left below.  The diagonal mirror alone would produce the reflection on the right below. 
+
+\begin{center}
+\includegraphics[width = 2.5in]{horizontal-reflection.jpg} \ \ \  \includegraphics[width = 2.5in]{diagonal-reflection.jpg}
+\end{center}
+
+\begin{center}
+ \includegraphics[width = 4in]{finish.jpg}
+  \end{center}
+Kaleidoscopic images like the one shown above are formed by reflections, reflections of reflections, reflections of reflections of reflections, and so on.  Each reflection produces a new pie-shaped piece (or sector) of the final image.  Why do you think there are only six pie-shaped pieces or sectors?
+
+We will use two-dimensional vectors $\vec x = \langle{x_1, x_2}\rangle$ to denote the coordinates of each point in the original image.  Mirrors flip or reflect images.  The same point whose original coordinates were denoted by the vector $\vec x = \langle{x_1, x_2}\rangle$ will now have coordinates denoted by a new vector $\vec y = \langle{y_1, y_2}\rangle$ after reflection.  
+The new coordinates are determined by a linear transformation
+
+\begin{eqnarray*}
+y_1 &=& a_{11} x_1 + a_{12} x_2\\
+y_2 &=& a_{21} x_1 + a_{22} x_2\\
+\end{eqnarray*}
+
+$$\left[{\begin{array}{c} y_1 \\ y_2 \\ \end{array}}\right] = \left[{\begin{array}{cc} a_{11} & a_{12} \\ a_{21} & a_{22} \\ \end{array}}\right] \left[{\begin{array}{c} x_1 \\ x_2 \\ \end{array}}\right]
+\quad {\rm or} \quad \vec y = A \vec x.$$
+
+\newpage
+
+\begin{enumerate}
+    \item Find the linear transformation that reflects an image by a mirror on the $x$-axis.  Express it as a matrix.  Write the matrix below.
+
+$$\left[{\begin{array}{cc}
+\\
+\underline{1} & \underline{0} \\
+\\
+\underline{0} & \underline{-1} \\
+\end{array}}\right].$$
+
+
+\vspace{.5in}
+
+
+
+\item Find the linear transformation that rotates an image counterclockwise through an angle of $60^{\circ}$.  Express it as a matrix.  Write the matrix below.
+
+$$\left[{\begin{array}{cc}
+\\
+\underline{\cos(60^{\circ})} & \underline{-sin(60^{\circ})} \\
+\\
+\underline{\sin(60^{\circ})} & \underline{\cos(60^{\circ})} \\
+\end{array}}\right].$$
+
+\vspace{.5in}
+
+
+\item Find the linear transformation that reflects an image by a mirror on the diagonal line that makes an angle of $60^{\circ}$ with the $x$-axis.  Express it as a matrix.  Write the matrix below.
+
+$$\left[{\begin{array}{cc}
+\\
+\underline{-\frac{1}{2}} & \underline{-\frac{\sqrt{3}}{2}} \\
+\\
+\underline{-\frac{\sqrt{3}}{2}} & \underline{\frac{1}{2}} \\
+\end{array}}\right].$$
+
+\vspace{8pt}
+
+
+\noindent Explain how you developed this matrix.
+
+\section*{Problem 1:}
+
+\noindent Reflection across the x-axis means the following is true. If...
+\[
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix}
+\]
+
+\noindent then ...
+
+\[    
+\begin{bmatrix}
+y_1 \\
+y_2
+\end{bmatrix}
+= 
+\begin{bmatrix}
+x_1 \\
+-x_2
+\end{bmatrix}
+\]
+
+\[y_1 = x_1 + 0x_2 = a_{11}x_1+a_{12}x_2\]
+\[y_2 = 0x_1-x_2  = a_{21}x_1+a_{22}x_2\]
+
+\noindent Matching coefficients.
+
+\[a_{12} = 0\]
+\[a_{21} = 0\]
+\[a_{11} = 1\]
+\[a_{22} = -1\]
+
+\noindent Thus, matrix A is as follows.
+
+\[
+\begin{bmatrix}
+y_1 \\
+y_2
+\end{bmatrix} = 
+\begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+\end{bmatrix}  
+\begin{bmatrix}
+    x_1 \\
+    x_2
+\end{bmatrix}
+\]
+
+\[\boxed{
+A=\begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+    \end{bmatrix}}
+\]
+
+\section*{Problem 2:}
+
+\noindent We can describe both components of the X vector in polar coordinates.
+
+\noindent convert to polar coordinates:
+
+\[
+\begin{bmatrix}
+    x_1 \\
+    x_2
+\end{bmatrix}
+\]
+
+\[
+x_1 = r \cos(\phi) 
+\]
+\[
+x_2 = r \sin(\phi)
+\]
+
+\noindent Now, with x in polar coordinates,s we know that the vector y is rotated by 60 degrees clockwise. 
+
+\noindent For now, we will say that 60 is equal to $\theta$. 
+
+\noindent To rotate by $\theta$, we must add theta to the original coordinates.
+
+\[y_1 = r \cos(\phi + \theta)\]
+
+\[y_2 = r \sin(\phi + \theta)\]
+
+\noindent The Sum Identities of both sin and cos are as follows
+
+\[\sin(\alpha + \beta) = \sin(\alpha)\cos(\beta) + \cos(\alpha)\sin(\beta)\]
+\[\cos(\alpha + \beta) = \cos(\alpha)\cos(\beta) - \sin(\alpha)\sin(\beta)\]
+
+\noindent Applying Trigonometric Identities to $y_1$ and $y_2$
+
+\[y_1 = r \cos(\phi + \theta) = r[\cos(\phi)\cos(\theta) - \sin(\phi)\sin(\theta)] = r\cos(\phi)\cos(\theta) - r\sin(\phi)\sin(\theta)
+\]
+\[
+y_2 = r \sin(\phi + \theta) = r[\sin(\phi)\cos(\theta) + \cos(\phi)\sin(\theta)] = r\sin(\phi)\cos(\theta) + r\cos(\phi)\sin(\theta)
+\]
+
+
+\noindent substitute $x_1 = r \cos(\phi)$ and $x_2 = r \sin(\phi)$
+
+\[
+y_1 = x_1 \cos(\theta) - x_2 \sin(\theta)  = \cos(\theta) x_1 - \sin(\theta)x_2 \]
+\[y_2 = x_2 \cos(\theta) + x_1 \sin(\theta) = \sin(\theta) x_1 + \cos(\theta) x_2\]
+
+\noindent convert to matrix form
+
+\[
+\begin{bmatrix}
+    y_1 \\
+    y_2
+\end{bmatrix} = 
+\begin{bmatrix}
+    \cos(\theta) & -sin(\theta) \\
+    \sin(\theta) & \cos(\theta)
+\end{bmatrix}
+\begin{bmatrix}
+    x_1 \\
+    x_2
+\end{bmatrix}
+\]
+
+\noindent substitute 60 degrees in to $\theta$
+
+\[
+\begin{bmatrix}
+    y_1 \\
+    y_2
+\end{bmatrix} = 
+\begin{bmatrix}
+    \cos(60^{\circ}) & -sin(60^{\circ}) \\
+    \sin(60^{\circ}) & \cos(60^{\circ})
+\end{bmatrix}
+\begin{bmatrix}
+    x_1 \\
+    x_2
+\end{bmatrix}
+\]
+
+\noindent the matrix A is below
+
+\[
+\boxed{
+A = \begin{bmatrix}
+    \cos(60^{\circ}) & -sin(60^{\circ}) \\
+    \sin(60^{\circ}) & \cos(60^{\circ})
+\end{bmatrix}}
+\]
+
+\section*{Problem 3:}
+
+
+\noindent For now $\theta$ will represent 60 degrees. We must apply all three operations in sequence.
+
+\noindent Before We already found both matraceis.
+
+\noindent Rotation point by $\theta$ was given by
+
+\[
+R(\theta)=\begin{bmatrix}
+    \cos(\theta) & -sin(\theta) \\
+    \sin(\theta) & \cos(\theta)
+\end{bmatrix}
+\]
+
+\noindent and Flippign across the X axis denoted this matrix
+
+\[
+F=\begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+\end{bmatrix}
+\]
+
+\[\vec{y} = A\vec{x}\]
+
+\noindent where matrix $A$ will consist of applying rotation by -60, reflection about x, and then rotation by 60
+
+\[
+A = R(-60^{\circ})FR(60^{\circ})
+\]
+
+\[A = \begin{bmatrix}
+    \cos(-60^{\circ}) & -sin(-60^{\circ}) \\
+    \sin(-60^{\circ}) & \cos(-60^{\circ})
+\end{bmatrix}
+\begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+\end{bmatrix}
+\begin{bmatrix}
+    \cos(60^{\circ}) & -sin(60^{\circ}) \\
+    \sin(60^{\circ}) & \cos(60^{\circ})
+\end{bmatrix}\] 
+
+\noindent Now multiply by the remaining matrix:
+
+\[
+A =
+\begin{bmatrix}
+\cos(-60^\circ) & \sin(-60^\circ) \\
+\sin(-60^\circ) & -\cos(-60^\circ)
+\end{bmatrix}
+\begin{bmatrix}
+\cos(60^\circ) & -\sin(60^\circ) \\
+\sin(60^\circ) & \cos(60^\circ)
+\end{bmatrix}
+\]
+
+\noindent Substitute values \(\cos 60^\circ = \frac{1}{2}\), \(\sin 60^\circ = \frac{\sqrt{3}}{2}\):
+
+\[
+=
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+-\frac{\sqrt{3}}{2} & -\frac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+\[
+\boxed{
+A=
+\begin{bmatrix}
+-\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+-\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}}
+\]
+
+\end{enumerate}
+
+\end{document}
