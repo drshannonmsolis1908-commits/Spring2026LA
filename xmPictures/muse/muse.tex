@@ -1,0 +1,142 @@
+\title{MATH 3307: Linear Algebra\\
+Project 3: Kaleidoscope Extended Project}
+\author{Ahniya Muse}
+\date{April 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+The goal of this project is to use matrices and linear transformations to model a virtual kaleidoscope. The transformations used are reflections and rotations in the plane.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.28\textwidth]{start.jpg}
+\includegraphics[width=0.28\textwidth]{horizontal-reflection.jpg}
+\includegraphics[width=0.28\textwidth]{diagonal-reflection.jpg}
+
+\vspace{0.3cm}
+
+\includegraphics[width=0.45\textwidth]{finish.jpg}
+\caption{Starting image, reflected images, and completed kaleidoscope image.}
+\end{figure}
+
+\section*{(1) Reflection Across the x-axis}
+
+The matrix for reflection across the x-axis is:
+
+\[
+F =
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+
+This transformation keeps the x-coordinate the same and changes the sign of the y-coordinate.
+
+\section*{(2) Rotation Counterclockwise by $60^\circ$}
+
+The matrix for rotation by $60^\circ$ is:
+
+\[
+R =
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+This rotates every point $60^\circ$ counterclockwise about the origin.
+
+\section*{(3) Reflection Across the Line at $60^\circ$}
+
+The matrix for reflection across the line at $60^\circ$ is:
+
+\[
+RF =
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+This matrix is obtained by reflecting across the x-axis and then rotating by $60^\circ$.
+
+\section*{(4a) Composition and Non-Commutativity}
+
+\[
+RF =
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+\[
+FR =
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+-\frac{\sqrt{3}}{2} & -\frac{1}{2}
+\end{bmatrix}
+\]
+
+Since $RF \neq FR$, matrix multiplication is not commutative.
+
+This means the order of transformations matters. Reflecting first and then rotating gives a different result than rotating first and then reflecting.
+
+\section*{(4b) Powers of Transformations}
+
+\[
+R^2 =
+\begin{bmatrix}
+-\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & -\frac{1}{2}
+\end{bmatrix}
+\]
+
+\[
+R^3 =
+\begin{bmatrix}
+-1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+
+\[
+R^6 =
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\]
+
+The matrix $R^6 = I$ because rotating six times by $60^\circ$ results in a full $360^\circ$ rotation, returning the image to its original position.
+
+\section*{(4c) Determinants as Geometric Invariants}
+
+\[
+\det(R) = 1
+\]
+
+Rotation preserves both area and orientation.
+
+\[
+\det(F) = -1
+\]
+
+Reflection preserves area but reverses orientation.
+
+\[
+\det(RF) = -1
+\]
+
+This preserves area but reverses orientation.
+
+\vspace{0.3cm}
+
+All kaleidoscope transformations preserve distances because rotations and reflections are rigid motions, meaning they do not change the size or shape of the image.
+
+\end{document}

@@ -1,0 +1,245 @@
+\begin{document}
+\begin{flushright}
+    NAME\\Henry Cruz
+    DATE\\04/16/2026
+\end{flushright}
+
+\begin{center}
+    \textbf{MATH 3307: Linear Algebra\\
+    Project 3: Kaleidoscope Project\\}
+\end{center}
+The images observed in a kaleidoscope are generated through successive reflections of a single object. Each reflection produces a pie-shaped segment, and these segments align symmetrically at $60^\circ$ intervals. The objective of this project is to utilize matrices and linear transformations to model and construct a virtual kaleidoscope. To achieve this, we represent points using two-dimensional vectors of the form $\mathbf{x} = (x_1, x_2)$. From vector x, we will get a new vector that will be denoted by the new vector $\mathbf{y} = (y_1,y_2) after it has been reflected$. By combining both x and y, we get two expressions. 
+\[
+\begin{aligned}
+y_1 &= a_{11}x_1 + a_{12}x_2 \\
+y_2 &= a_{21}x_1 + a_{22}x_2
+\end{aligned}
+\quad \text{or} \quad
+\begin{bmatrix}
+y_1 \\
+y_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix}
+\]
+We will now go ahead and start working towards our goal by first tackling the linear transformation that reflects an image by a mirror on the x-axis. This will only be express in term of $x$. \[
+T(x_1, x_2) = (x_1, -x_2)
+\]
+
+\[
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+It has a -1 in place of $x_2$ to indicate the flip in vertical position. For better understanding, the first row controls the x-axis and the bottom row controls the y-axis. Now we will tackle the second step, which is to find the linear transformation that rotates the image counterclockwise through an angle of $60^\circ$. Since we are now involving angles the best way to start is by going to the unit circle and find the values for $60^\circ$. it will look like the matrix shown below. The linear transformation that rotates an image counterclockwise through an angle of $60^\circ$ is given by
+\[
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}.
+\]
+The picture is going counterclockwise, and we start with $y_1$ beginning in quadrant 4, going towards $y_2$, which is in quadrant 1. The reason why the values of $60^\circ$ are in that form of the matrix is because of the way the matrix is written as shown below. 
+\[
+R(\theta) =
+\begin{bmatrix}
+\cos\theta & -\sin\theta \\
+\sin\theta & \cos\theta
+\end{bmatrix}
+\]
+The linear transformation that reflects an image across the diagonal line making an angle of $60^\circ$ with the $x$-axis is represented by the matrix.
+\[
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}.
+\]
+We now examine the concept of composition of linear transformations and the non-commutativity of matrices. Specifically, we consider a rotation by $60^\circ$
+ and a reflection across a line, making a $60^\circ$
+ angle with the x-axis. Let
+R denote the rotation matrix corresponding to a $60^\circ$
+ counterclockwise rotation, and let F denote the reflection matrix across the line at $60^\circ$.
+Our goal is to investigate whether the composition of these transformations is commutative; that is, whether RF=FR.
+
+To do this, we compute both products, RF and FR, and compare the results. If the matrices are equal, then the transformations commute. If they are not equal, this shows that the order in which transformations are applied affects the final result.
+We will now start solving for both RF and FR. 
+\[
+R =
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix},
+\quad
+F =
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+\[
+RF =
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & 0 \\
+0 & 1
+\end{bmatrix}
+\]
+
+\[
+FR =
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & -\frac{1}{2}
+\end{bmatrix}
+\]
+
+\[
+RF \neq FR
+\]
+We have now proven that matrix multiplication is commutative. When we multiply by RF, we obtain the identity matrix, with the image reflected across the y-axis. When we multiply FR we obtain the image flipped over the x-axis at $60^\circ$. So in conclusion, RF would be the whole image flipped over the y-axis, while FR has the image flipped over the x-axis diagonally. This demonstrates that FR is not commutative. 
+
+Powers of transformations applied to a matrix will not affect the size of the image; instead, it mainly focuses on rotation, as shown below. 
+\[
+R =
+\begin{bmatrix}
+\frac12 & -\frac{\sqrt3}{2} \\
+\frac{\sqrt3}{2} & \frac12
+\end{bmatrix}
+\]
+
+\[
+R^2 = RR =
+\begin{bmatrix}
+\frac12 & -\frac{\sqrt3}{2} \\
+\frac{\sqrt3}{2} & \frac12
+\end{bmatrix}
+\begin{bmatrix}
+\frac12 & -\frac{\sqrt3}{2} \\
+\frac{\sqrt3}{2} & \frac12
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\frac12 & -\frac{\sqrt3}{2} \\
+\frac{\sqrt3}{2} & -\frac12
+\end{bmatrix}
+\]
+
+\[
+R^3 = R^2R =
+\begin{bmatrix}
+-\frac12 & -\frac{\sqrt3}{2} \\
+\frac{\sqrt3}{2} & -\frac12
+\end{bmatrix}
+\begin{bmatrix}
+\frac12 & -\frac{\sqrt3}{2} \\
+\frac{\sqrt3}{2} & \frac12
+\end{bmatrix}
+=
+\begin{bmatrix}
+-1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+
+\[
+R^6 =
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\]
+    \textbf{}
+\end{problem}
+Keeping in mind that R = $60^\circ$, so when it is raised to the second power, the image is being rotated twice, so $60^\circ$ + $60^\circ$ = $120^\circ$. The third power rotates the image three times, equaling $180^\circ$. Raised to the sixth will go back to its original position or $360^\circ$. 
+\[
+R=
+\begin{bmatrix}
+\frac12 & -\frac{\sqrt3}{2}\\
+\frac{\sqrt3}{2} & \frac12
+\end{bmatrix}
+\]
+
+Since \(R\) represents a rotation of \(60^\circ\), applying it six times gives
+
+\[
+R^6 = R(6\cdot 60^\circ)=R(360^\circ)
+\]
+
+\[
+R^6=
+\begin{bmatrix}
+\cos 360^\circ & -\sin 360^\circ\\
+\sin 360^\circ & \cos 360^\circ
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}
+=I
+\]
+
+Geometrically, six rotations of \(60^\circ\) produce a full \(360^\circ\) rotation, which returns the image to its original position. Therefore, \(R^6=I\).
+In conclusion, when we raise a matrix to a power, we have to add R by k times, and later we plug the answer into the matrix using cosine and sine to convert the angle to a number on the unit circle. 
+We will now see what happens when we take the determinant of the matrices of the image. The determinant of a matrix will dictate the scalar value of the matrix. So, if we take the determinant of the image matrix and apply it, will it make it bigger or smaller, or change orientation if it's positive or negative? We will focus on the determinant of the matrix that reflects across the x-axis, rotates by $60^\circ$, and reflects by $60^\circ$.  
+\section*{Determinants and Geometric Interpretation}
+\[
+\begin{array}{|c|c|p{8cm}|}
+\hline
+\textbf{Transformation} & \textbf{Determinant} & \textbf{Interpretation} \\
+\hline
+\text{Reflection across the } x\text{-axis } 
+\begin{bmatrix}
+1 & 0\\
+0 & -1
+\end{bmatrix}
+& -1
+& Preserves area but reverses orientation because it is a reflection. \\
+\hline
+\text{Rotation by }60^\circ \ 
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2}\\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+& 1
+& Preserves both area and orientation because it is a rotation. \\
+\hline
+\text{Reflection across the line at }60^\circ \
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2}\\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+& -1
+& Preserves area but reverses orientation because it is a reflection. \\
+\hline
+\end{array}
+\]
+
+As shown in the table above, we see that the determinants of each matrix have a magnitude of one. This means that there is no change in the size of the pictures of the kaleidoscope; the only thing that is happening is that there is a reflection or rotation. Where negative is the representation of reverse.
+In this project, linear transformations were used to model the geometrical behavior of kaleidoscope images. By representing reflection and rotations as matrices, we were able to describe how an original image can be systematically transformed to produce a symmetrical pattern composed of six identical sectors. We see the effects of powers on the matrix that correspond to repeated angular rotation. Finally, the determinants of the matrices were analyzed to understand their geometrical effects. 
+\end{document}

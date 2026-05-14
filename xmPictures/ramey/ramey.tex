@@ -1,0 +1,89 @@
+\documentclass{ximera}
+
+\title{Project 3: Kaleidoscope}
+\author{Jada Ramey}
+
+\begin{document}
+Note: The original template could not be accessed due to editor limits, so this document was created independently in Overleaf while following the project requirements.
+
+\section{Introduction}
+This project explores reflections and rotations using matrices to simulate a kaleidoscope. Linear transformations are used to model symmetry and repeated patterns.
+
+\section{(1) Reflection across the x-axis}
+
+\[
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+
+This matrix reflects points across the x-axis by keeping the x-coordinate the same and negating the y-coordinate.
+
+\section{(2) Rotation by 60 degrees}
+
+\[
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+This matrix rotates points counterclockwise by $60^\circ$.
+
+\section{(3) Reflection across a 60 degree line}
+
+\[
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+This matrix was constructed using the reflection formula for a line at a 60 degree angle.
+
+\section{(4a) Composition}
+
+Let $R$ be the rotation matrix and $F$ be the reflection matrix.
+
+\[
+R =
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix},
+\quad
+F =
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+
+\[
+RF \neq FR
+\]
+
+Matrix multiplication is not commutative, so the order of transformations matters. Applying reflection first versus rotation first produces different results.
+
+\section{(4b) Powers of R}
+
+\[
+R^6 =
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\]
+
+Applying the rotation six times results in a full $360^\circ$ rotation, returning the image to its original position.
+
+\section{(4c) Determinants}
+
+\[
+\det(R) = 1, \quad \det(F) = -1
+\]
+
+A determinant of 1 preserves orientation, while a determinant of -1 reverses orientation. This explains why reflections flip images while rotations do not.
+
+\end{document}

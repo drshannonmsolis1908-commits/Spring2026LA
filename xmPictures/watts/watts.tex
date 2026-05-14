@@ -1,0 +1,130 @@
+\title{MATH 3307: Linear Algebra \\ Project 3: Kaleidoscope Project}
+\author{Christian Watts}
+\date{}
+
+
+\begin{document}
+\begin{abstract}
+        PVAMU Linear Algebra student Christian Watts Kaleidoscope Project
+\end{abstract}
+\maketitle
+
+
+%\begin{example}
+%   \begin{center}
+%\geogebra{XC3FXUdJ}{800}{600}%%https://www.geogebra.org/m/XC3FXUdJ
+%\end{center}
+%    \begin{solution}
+%        Here is my solution
+%    \end{solution}
+%\end{example}
+
+
+
+
+
+
+
+
+
+\section*{(1) Reflection over x-axis}
+
+\textbf{First apply the transformation to a point}
+
+Let the vector = $$(x_1, x_2)$$. After reflection:
+
+\[
+y_1 = x_1, \quad y_2 = -x_2
+\]
+
+\textbf{Write it out in matrix form}
+
+\[
+\begin{bmatrix}
+y_1 \\
+y_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix}
+\]
+
+\textbf{The matrix is}
+
+\[
+A =
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+
+\section*{(2) Rotation by $60^\circ$ counterclockwise}
+
+\textbf{ Use the rotation formula}
+
+\[
+A =
+\begin{bmatrix}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{bmatrix}
+\]
+
+\textbf{ $\theta = 60^\circ$ and plug that in cos and sin}
+
+\[
+\cos 60^\circ = \frac{1}{2}, \quad \sin 60^\circ = \frac{\sqrt{3}}{2}
+\]
+
+\textbf{The final matrix is}
+
+\[
+A =
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+\section*{(3) Reflection across a line at $60^\circ$}
+
+\textbf{Use the reflection formula}
+
+Reflection across a line at angle $\theta$:
+
+\[
+A =
+\begin{bmatrix}
+\cos(2\theta) & \sin(2\theta) \\
+\sin(2\theta) & -\cos(2\theta)
+\end{bmatrix}
+\]
+
+\textbf{ $\theta = 60^\circ$ but multiple it by 2 and plug into cos and sin}
+
+\[
+2\theta = 2(60^\circ) = 120^\circ
+\]
+\[
+\textbf{plug in } 120^\circ \textbf{degrees}
+\]
+\[
+\cos 120^\circ = -\frac{1}{2}, \quad \sin 120^\circ = \frac{\sqrt{3}}{2}
+\]
+
+\textbf{Final matrix is}
+
+\[
+A =
+\begin{bmatrix}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]

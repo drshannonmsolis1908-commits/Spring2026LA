@@ -1,0 +1,79 @@
+\documentclass{ximera}
+
+\title{MATH 3307: Kaleidoscope Project}
+\author{Shanti Valerio}
+
+\begin{document}
+\begin{abstract}
+    This activity explores reflections and rotations in $\mathbb{R}^2$ using matrix transformations.
+\end{abstract}
+\maketitle
+
+\begin{exercise}
+\textbf{(1) Reflection across the x-axis}
+
+A reflection across the x-axis maps $(x, y)$ to $(x, -y)$.
+
+Applying this to the standard basis vectors:
+\[
+T(1,0) = (1,0), \quad T(0,1) = (0,-1).
+\]
+
+So the transformation matrix is:
+\[
+F = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}.
+\]
+
+\end{exercise}
+
+\begin{exercise}
+\textbf{(2) Rotation by $60^\circ$}
+
+The general rotation matrix is:
+\[
+R = \begin{bmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{bmatrix}.
+\]
+
+Substitute $\theta = 60^\circ$:
+\[
+R = \begin{bmatrix} \cos 60^\circ & -\sin 60^\circ \\ \sin 60^\circ & \cos 60^\circ \end{bmatrix}.
+\]
+
+Using known values:
+\[
+\cos 60^\circ = \frac{1}{2}, \quad \sin 60^\circ = \frac{\sqrt{3}}{2},
+\]
+
+we get:
+\[
+R = \begin{bmatrix} \frac{1}{2} & -\frac{\sqrt{3}}{2} \\[6pt] \frac{\sqrt{3}}{2} & \frac{1}{2} \end{bmatrix}.
+\]
+
+\end{exercise}
+
+\begin{exercise}
+\textbf{(3) Reflection across the line at $60^\circ$}
+
+The formula for reflection across a line at angle $\theta$ is:
+\[
+M = \begin{bmatrix} \cos(2\theta) & \sin(2\theta) \\ \sin(2\theta) & -\cos(2\theta) \end{bmatrix}.
+\]
+
+Substitute $\theta = 60^\circ$:
+\[
+2\theta = 120^\circ.
+\]
+
+Compute:
+\[
+\cos 120^\circ = -\frac{1}{2}, \quad \sin 120^\circ = \frac{\sqrt{3}}{2}.
+\]
+
+So the matrix becomes:
+\[
+M = \begin{bmatrix} -\frac{1}{2} & \frac{\sqrt{3}}{2} \\[6pt] \frac{\sqrt{3}}{2} & \frac{1}{2} \end{bmatrix}.
+\]
+
+\end{exercise}
+
+\end{document}

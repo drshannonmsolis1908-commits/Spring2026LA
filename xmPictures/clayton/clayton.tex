@@ -1,0 +1,73 @@
+\title{MATH 3307: Linear Algebra \\ Project 3: Kaleidoscope Project}
+\author{Matthew Clayton}
+\date{April 23, 2026}
+
+
+\begin{document}
+\begin{abstract}
+        PVAMU Linear Algebra Matthew Clayton Kaleidoscope Project
+\end{abstract}
+\maketitle
+
+\section*{(1) Reflection across the x-axis}
+
+Reflection across the x-axis means that the $x$-coordinates remain the same and the $y$-coordinates are reversed.
+
+\[
+\begin{bmatrix}
+y_1 \\
+y_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix}
+\]
+
+
+\[
+A =
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+
+\section*{(2) Rotation by $60^\circ$ counterclockwise}
+
+\textbf{Step 1: Use the standard rotation formula $\theta = 60^\circ$:}
+
+
+\[
+R =
+\begin{bmatrix}
+\cos 60^\circ & -\sin 60^\circ \\ \sin 60^\circ & \cos 60^\circ
+\end{bmatrix} = \begin{bmatrix}
+    1/2 & -\sqrt{3}/2 \\ \sqrt{3}/2 & 1/2
+\end{bmatrix} 
+\]
+
+
+\[
+R =
+\begin{bmatrix}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2}
+\end{bmatrix}
+\]
+
+\section*{(3) Reflection across a line at $60^\circ$}
+
+Use the reflection formula $F = \begin{bmatrix}\cos(2\theta) & \sin(2\theta) \\ \sin(2\theta) & -\cos(2\theta)
+\end{bmatrix}$ with $\theta = 60^\circ$:
+\[
+F =
+\begin{bmatrix}
+\cos120^\circ & \sin 120^\circ \\ \ sin120^\circ & -\cos 120^\circ 
+\end{bmatrix}
+\]
