@@ -1,15 +1,14 @@
-\begin{document}
-\begin{flushright}
-    NAME: Jose Miguel Epkwa O.M\\
-    DATE: 04/14/2026
-\end{flushright}
-\vspace{0.5cm}
+\documentclass{ximera}
 
-\begin{center}
-    \textbf{MATH 3307: Linear Algebra\\
-    Project 3: KALEIDOSCHOP PROJECT\\}
-    \vspace{0.5cm}
-\end{center}
+\title{Project 3: Jose Miguel}
+\author{Jose Miguel}
+
+\begin{document}
+\begin{abstract}
+    Project 3 on kaleidoscope completed by Jose Miguel .
+\end{abstract}
+
+\maketitle
 
 \begin{problem}
    Find the linear transformation that reflects an image by a mirror on the x-axis.
@@ -147,22 +146,18 @@ This matrix was developed using the general formula for reflection across a line
   Here, we know R is the rotation matrix by $60^\circ$ from "Problem 2" and F is the reflection matrix across the x-axis.\\
   Hence:
 
-  \vspace{0.4cm}
-
-  R =
+ $$ R =
 \begin{bmatrix}
 \frac{1}{2} & -\frac{\sqrt{3}}{2} \\
 \frac{\sqrt{3}}{2} & \frac{1}{2}
-\end{bmatrix}
+\end{bmatrix} \quad 
 F =
 \begin{bmatrix}
 1 & 0 \\
 0 & -1
-\end{bmatrix}
+\end{bmatrix}$$
   
-  \vspace{0.4cm}
-  
-  (a) Computing RF and FR:\\
+  (a) Computing $RF$ and $FR$:\\
   
   \vspace{0.04cm}
   
@@ -170,7 +165,7 @@ F =
 
   \vspace{0.3cm}
 
-RF =
+$$RF =
 \begin{bmatrix}
 \frac{1}{2} & -\frac{\sqrt{3}}{2} \\
 \frac{\sqrt{3}}{2} & \frac{1}{2}
@@ -183,15 +178,11 @@ RF =
 \begin{bmatrix}
 \frac{1}{2} & \frac{\sqrt{3}}{2} \\
 \frac{\sqrt{3}}{2} & -\frac{1}{2}
-\end{bmatrix}
-
-  \vspace{0.3cm}
+\end{bmatrix}$$
 
 Next, we compute $FR$:
 
-  \vspace{0.3cm}
-
-FR =
+$$FR =
 \begin{bmatrix}
 1 & 0 \\
 0 & -1
@@ -204,9 +195,7 @@ FR =
 \begin{bmatrix}
 \frac{1}{2} & -\frac{\sqrt{3}}{2} \\
 -\frac{\sqrt{3}}{2} & -\frac{1}{2}
-\end{bmatrix}
-
-\vspace{0.4cm}
+\end{bmatrix}$$
 
 (b) Since $RF \neq FR$, the matrices do not commute.
 
@@ -228,7 +217,7 @@ FR =
 
     \vspace{0.03cm}
     
-    R^2($120^\circ$) =
+   $$ R^2(120^\circ) =
 \begin{bmatrix}
 \cos 120^\circ & -\sin 120^\circ \\
 \sin 120^\circ & \cos 120^\circ
@@ -237,11 +226,11 @@ FR =
 \begin{bmatrix}
 -\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
 \frac{\sqrt{3}}{2} & -\frac{1}{2}
-\end{bmatrix} \\
+\end{bmatrix} $$
 
   \vspace{0.2cm}
 
-  R^3($180^\circ$) =
+$$ R^3(180^\circ) =
 \begin{bmatrix}
 \cos 180^\circ & -\sin 180^\circ \\
 \sin 180^\circ & \cos 180^\circ
@@ -250,11 +239,11 @@ FR =
 \begin{bmatrix}
 -1 & 0 \\
 0 & -1
-\end{bmatrix}\\
+\end{bmatrix}$$
 
   \vspace{0.2cm}
 
-  R^6($360^\circ$) =
+ $$ R^6(360^\circ) =
 \begin{bmatrix}
 \cos 360^\circ & -\sin 360^\circ \\
 \sin 360^\circ & \cos 360^\circ
@@ -263,7 +252,7 @@ FR =
 \begin{bmatrix}
 1 & 0 \\
 0 & 1
-\end{bmatrix}\\
+\end{bmatrix}$$
 
   \vspace{0.3cm}
 
@@ -271,11 +260,11 @@ FR =
 
   \vspace{0.3cm}
 
-  R^k =
+$$  R^k =
 \begin{bmatrix}
 \cos(60k^\circ) & -\sin(60k^\circ) \\
 \sin(60k^\circ) & \cos(60k^\circ)
-\end{bmatrix}
+\end{bmatrix}$$
 
   \vspace{0.3cm}
 
@@ -284,8 +273,6 @@ FR =
    \vspace{0.7cm}
 
 \textbf{Problem 4c.}\\
-
-  \vspace{0.01cm}
   
 We compute the determinants of the given matrices.
 
@@ -318,3 +305,4 @@ The determinant shows how a transformation changes a shape. A value of 1 means t
 Thus, all kaleidoscope transformations preserve distances (and therefore area), but reflections reverse orientation while rotations do not.
 
 \end{problem}
+\end{document}
