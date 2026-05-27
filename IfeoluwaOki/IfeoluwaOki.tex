@@ -72,77 +72,7 @@ Prove the following matrices with full computations for each multiplication. Spe
     \item Adjacency Matrix $M_1$– PVAMU Road Connectivity\\
     A $7\times 7$ matrix representing which intersections connect. Use 1 if roads link the intersections (as shown above), otherwise 0.\\
 
-    \item Incoming Traffic Vector $M_2$\\
-    A $7\times 1$ vector showing estimated 15 minute incoming vehicle counts:
-    \begin{enumerate}    
-    \item[A:] Main Entrance – most vehicles enter here
-    \item[B:] Library Zone
-    \item[C:] Engineering Quad
-    \item[D:] Student Center Intersection
-    \item[E:] Residential Halls
-    \item[F:] Stadium Parking
-\end{enumerate}
-(Students may use realistic approximations in the range 80–300 cars.)
-
-    \item Transition Matrix $M_3$\\
-    A $7\times 7$ matrix where each row sums to 1, representing percentages of traffic sent to each neighboring location. Must match PVAMU road directions (two way or one way).\\
-
-    \item Actual Flow Vector $M_4=M_3 M_2$\\
-    This converts percentages into actual vehicle numbers.
-
-    \item Road Capacity Matrix $M_5$\\
-    A symmetric $7\times 7$ matrix representing maximum vehicle throughput per 15 minutes on each road segment.
-Capacities should reflect the wider vs narrower campus roads indicated on the PVAMU map
-(e.g., Owens Rd. has higher capacity than internal connectors). \\
-
-    \item Congestion Pressure Matrix $M_6=M_4-M_5$\\
-    Positive values indicate over capacity segments.\\
-
-    \item Penalty Matrix $M_7$\\
-    This is a diagonal matrix reflecting severity with the following construction.
-    \begin{eqnarray*}
-        1 & = & \mbox{ within limit} \\
-        2 & = & \mbox{ over limit} \\
-        3 & = & \mbox{ severly over limit} 
-    \end{eqnarray*}
-    Use thresholds chosen by the student.\\
-
-    \item Weighted Congestion Matrix $M_8=M_7 M_6$\\
-    This amplifies important congestion points.
-
-    \item Distance Matrix $M_9$\\
-    A symmetric matrix giving approximate real distances between locations. Use distances approximated from the PVAMU map's relative geometry (e.g., Engineering $\leftrightarrow$ Student Center is shorter than Main Entrance $\leftrightarrow$ Student Center).\\
-
-    \item Final Traffic Stress Matrix $M_10=M_8M_9$\\
-    This matrix incorporates physical distance with congestion.
-\end{enumerate}\\
-
-\vspace{1in}
-
-Write a 1-2 page report discussing:
-    \begin{itemize}
-        \item Which PVAMU intersections experience highest traffic pressure
-        \item Which campus roads are bottlenecks
-        \item Whether residential–academic conduits (C $\leftrightarrow$ E, B $\leftrightarrow$ C) are overloaded
-        \item How stadium event traffic (F) affects flow
-        \item Recommendations such as: 
-        \begin{itemize}
-            \item rerouting
-            \item adding lanes
-            \item timed signals
-            \item building new connectors
-        \end{itemize}
-        \item Design a new traffic flow if you feel a better design is warranted.
-    \end{itemize}
-
-\clearpage
-\section*{Solution}
-
-\begin{enumerate}
-
-\item \textbf{Matrix $M_1$: Adjacency Matrix}
-
-\[
+    \[
 M_1=
 \begin{bmatrix}
 0 & 1 & 1 & 0 & 1 & 0 & 0 \\
@@ -155,7 +85,17 @@ M_1=
 \end{bmatrix}
 \]
 
-\item \textbf{Matrix $M_2$: Incoming Traffic}
+    \item Incoming Traffic Vector $M_2$\\
+    A $7\times 1$ vector showing estimated 15 minute incoming vehicle counts:
+    \begin{enumerate}    
+    \item[A:] Main Entrance – most vehicles enter here
+    \item[B:] Library Zone
+    \item[C:] Engineering Quad
+    \item[D:] Student Center Intersection
+    \item[E:] Residential Halls
+    \item[F:] Stadium Parking
+\end{enumerate}
+(Students may use realistic approximations in the range 80–300 cars.)
 
 \[
 M_2=
@@ -170,9 +110,11 @@ M_2=
 \end{bmatrix}
 \]
 
-\item \textbf{Matrix $M_3$: Transition Matrix}
 
-\[
+    \item Transition Matrix $M_3$\\
+    A $7\times 7$ matrix where each row sums to 1, representing percentages of traffic sent to each neighboring location. Must match PVAMU road directions (two way or one way).\\
+
+    \[
 M_3=
 \begin{bmatrix}
 0 & 0.33 & 0.33 & 0 & 0.34 & 0 & 0 \\
@@ -185,9 +127,11 @@ M_3=
 \end{bmatrix}
 \]
 
-\item \textbf{Matrix $M_4 = M_3M_2$}
 
-First compute:
+    \item Actual Flow Vector $M_4=M_3 M_2$\\
+    This converts percentages into actual vehicle numbers.
+
+    First compute:
 \[
 M_3M_2=
 \begin{bmatrix}
@@ -215,7 +159,10 @@ M_4=
 \end{bmatrix}
 \]
 
-\item \textbf{Matrix $M_5$: Capacity Matrix}
+    \item Road Capacity Matrix $M_5$\\
+    A symmetric $7\times 7$ matrix representing maximum vehicle throughput per 15 minutes on each road segment.
+Capacities should reflect the wider vs narrower campus roads indicated on the PVAMU map
+(e.g., Owens Rd. has higher capacity than internal connectors). \\
 
 \[
 M_5=
@@ -230,13 +177,19 @@ M_5=
 \end{bmatrix}
 \]
 
-\item \textbf{Matrix $M_6 = M_4 - M_5$}
+    \item Congestion Pressure Matrix $M_6=M_4-M_5$\\
+    This matrix compares traffic flow to road capacity.\\
 
-This matrix compares traffic flow to road capacity.
+    \item Penalty Matrix $M_7$\\
+    This is a diagonal matrix reflecting severity with the following construction.
+    \begin{eqnarray*}
+        1 & = & \mbox{ within limit} \\
+        2 & = & \mbox{ over limit} \\
+        3 & = & \mbox{ severly over limit} 
+    \end{eqnarray*}
+    Use thresholds chosen by the student.\\
 
-\item \textbf{Matrix $M_7$: Penalty Matrix}
-
-\[
+    \[
 M_7=
 \begin{bmatrix}
 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -249,13 +202,13 @@ M_7=
 \end{bmatrix}
 \]
 
-\item \textbf{Matrix $M_8 = M_7M_6$}
+    \item Weighted Congestion Matrix $M_8=M_7 M_6$\\
+    This matrix amplifies congestion levels.
 
-This matrix amplifies congestion levels.
+    \item Distance Matrix $M_9$\\
+    A symmetric matrix giving approximate real distances between locations. Use distances approximated from the PVAMU map's relative geometry (e.g., Engineering $\leftrightarrow$ Student Center is shorter than Main Entrance $\leftrightarrow$ Student Center).\\
 
-\item \textbf{Matrix $M_9$: Distance Matrix}
-
-\[
+    \[
 M_9=
 \begin{bmatrix}
 0 & 2 & 3 & 0 & 4 & 0 & 0 \\
@@ -268,13 +221,11 @@ M_9=
 \end{bmatrix}
 \]
 
-\item \textbf{Matrix $M_{10} = M_8M_9$}
+    \item Final Traffic Stress Matrix $M_{10}=M_8M_9$\\
+    This final matrix represents total traffic stress by combining congestion and distance.
+\end{enumerate}\\
 
-This final matrix represents total traffic stress by combining congestion and distance.
 
-\end{enumerate}
-
-\clearpage
 \section*{Analysis}
 
 The results indicate that the main entrance (A) and residential areas (D) experience the highest traffic pressure due to high incoming vehicle volume. Major bottlenecks occur along connections such as A to E and D to F, where traffic demand approaches or exceeds capacity.
