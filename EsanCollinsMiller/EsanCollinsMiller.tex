@@ -1,0 +1,101 @@
+\documentclass{ximera}
+
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{lipsum}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Project 3: Samuel Esan, Shekinah Collins, Xjiani Miller}
+\author{Samuel Esan, Shekinah Collins, Xjiani Miller}
+
+\begin{document}
+\begin{abstract}
+    Project 3 on kaleidoscope completed by Samuel Esan, Shekinah Collins, Xjiani Miller. 
+\end{abstract}
+
+\maketitle
+
+\section*{Overview}
+The goal of this project is to use the power of matrices and linear transformations to build a virtual kaleidoscope.  
+
+\begin{center}
+
+\section*{Virtual Kaleidoscopes}
+\vskip 0.125in
+\includegraphics[width = 2.5in]{start.jpg} \ \ \  \includegraphics[width = 2.5in]{finish.jpg}
+\end{center}
+
+A physical kaleidoscope\footnote{There are many different kinds of kaleidoscopes.  This is just one example.} starts with a pie-shaped image like the one on the left above.  Two mirrors are held perpendicular to the paper with the image.  One mirror is held above the horizontal edge of the image and the other is held above the angled edge of the image.  The two edges and, thus, the two mirrors meet in a $60^{\circ}$ angle.  The horizontal mirror alone would produce the reflection on the left below.  The diagonal mirror alone would produce the reflection on the right below. 
+
+\begin{center}
+\includegraphics[width = 2.5in]{horizontal-reflection.jpg} \ \ \  \includegraphics[width = 2.5in]{diagonal-reflection.jpg}
+\end{center}
+
+\begin{center}
+ \includegraphics[width = 4in]{finish.jpg}
+  \end{center}
+Kaleidoscopic images like the one shown above are formed by reflections, reflections of reflections, reflections of reflections of reflections, and so on.  Each reflection produces a new pie-shaped piece (or sector) of the final image.  Why do you think there are only six pie-shaped pieces or sectors?
+
+We will use two-dimensional vectors $\vec x = \langle{x_1, x_2}\rangle$ to denote the coordinates of each point in the original image.  Mirrors flip or reflect images.  The same point whose original coordinates were denoted by the vector $\vec x = \langle{x_1, x_2}\rangle$ will now have coordinates denoted by a new vector $\vec y = \langle{y_1, y_2}\rangle$ after reflection.  
+The new coordinates are determined by a linear transformation
+
+\begin{eqnarray*}
+y_1 &=& a_{11} x_1 + a_{12} x_2\\
+y_2 &=& a_{21} x_1 + a_{22} x_2\\
+\end{eqnarray*}
+
+$$\left[{\begin{array}{c} y_1 \\ y_2 \\ \end{array}}\right] = \left[{\begin{array}{cc} a_{11} & a_{12} \\ a_{21} & a_{22} \\ \end{array}}\right] \left[{\begin{array}{c} x_1 \\ x_2 \\ \end{array}}\right]
+\quad {\rm or} \quad \vec y = A \vec x.$$
+
+\begin{enumerate}
+    \item Find the linear transformation that reflects an image by a mirror on the $x$-axis.  Express it as a matrix.  Write the matrix below.
+
+$$\left[{\begin{array}{cc}
+1 & 0 \\
+0 & -1 \\
+\end{array}}\right].$$
+
+
+\vspace{.5in}
+
+
+
+\item Find the linear transformation that rotates an image counterclockwise through an angle of $60^{\circ}$.  Express it as a matrix.  Write the matrix below.
+
+$$\left[{\begin{array}{cc}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2} \\
+\end{array}}\right].$$
+
+\vspace{.5in}
+
+
+\item Find the linear transformation that reflects an image by a mirror on the diagonal line that makes an angle of $60^{\circ}$ with the $x$-axis.  Express it as a matrix.  Write the matrix below.
+
+$$\left[{\begin{array}{cc}
+-\frac{1}{2} & \frac{\sqrt{3}}{2} \\
+\frac{\sqrt{3}}{2} & \frac{1}{2} \\
+\end{array}}\right].$$
+
+\vspace{8pt}
+
+
+\noindent Explain how you developed this matrix.
+
+
+\end{enumerate}
+\noindent To find the reflection across a line at $60^\circ$, we rotate the coordinate system so that the line aligns with the x-axis, perform a reflection across the x-axis, and then rotate back.
+
+
+This is written as:
+
+\[
+A = R(-60^\circ)\, M_x \, R(60^\circ)
+\]
+\end{document}  

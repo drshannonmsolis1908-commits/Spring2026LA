@@ -1,0 +1,107 @@
+\documentclass{ximera}
+
+\title{Project 3: Ryan Bailey}
+\author{Ryan Bailey}
+
+\begin{document}
+\begin{abstract}
+    Project 3 over kaleidoscope completed Ryan Bailey. 
+\end{abstract}
+\maketitle
+
+\section*{Abstract}
+
+This project demonstrates how linear algebra can be used to generate symmetric geometric patterns through repeated matrix transformations. Using reflections as linear transformations, a simple 2D shape is transformed into a structured pattern resembling a kaleidoscope. The objective is to connect matrix operations to visual symmetry and geometric design.
+
+\section*{Introduction}
+
+Linear transformations are fundamental in engineering, physics, and computer graphics. In this project, reflections are used to simulate a virtual kaleidoscope. Starting with a base shape, repeated transformations produce complex and symmetric designs. This highlights how simple matrix operations can lead to visually rich results.
+
+\section*{Mathematical Background}
+
+A linear transformation can be represented as:
+
+\[
+P' = TP
+\]
+
+where $P$ is a coordinate vector and $T$ is a transformation matrix.
+
+\subsection*{Reflection Matrices}
+
+Diagonal reflection (over $y=x$):
+
+\[
+R_d =
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+\]
+
+Horizontal reflection (over x-axis):
+
+\[
+R_h =
+\begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}
+\]
+
+These transformations preserve distances but change orientation, which is essential for symmetry generation.
+
+\section*{Methodology}
+
+The process begins with an initial geometric shape defined by coordinate points. Each transformation is applied using matrix multiplication.
+
+Steps:
+
+\begin{itemize}
+\item Start with base shape
+\item Apply diagonal reflection to generate mirrored structure
+\item Apply horizontal reflection to create vertical symmetry
+\item Combine transformations iteratively
+\end{itemize}
+
+Each iteration increases geometric complexity while preserving structural consistency.
+
+\section*{Results}
+
+The following images show the transformation process step by step.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{start}
+\caption{Initial Shape}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{diagonal-reflection}
+\caption{After Diagonal Reflection}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{horizontal-reflection}
+\caption{After Horizontal Reflection}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{finish}
+\caption{Final Kaleidoscope Pattern}
+\end{figure}
+
+\section*{Discussion}
+
+The results demonstrate how repeated linear transformations create structured symmetry. Diagonal reflections introduce rotational-like symmetry, while horizontal reflections reinforce axis-based symmetry. Together, they form patterns similar to those found in kaleidoscopes and computer-generated art.
+
+This shows how matrix operations are not only algebraic tools but also practical methods for visual modeling.
+
+\section*{Conclusion}
+
+This project illustrates the application of linear algebra in geometric design. By using reflection matrices, complex and visually appealing patterns can be generated from simple inputs. This technique is widely applicable in computer graphics, simulation, and engineering visualization.
+
+\end{document}

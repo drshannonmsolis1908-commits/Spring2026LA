@@ -1,0 +1,392 @@
+\documentclass{ximera}
+
+\usepackage{fullpage}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{lipsum}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Project 3: David Mendoza}
+\author{David Mendoza}
+
+\begin{document}
+\begin{abstract}
+    Project 3 over PVAMU traffic flow completed by David Mendoza. 
+\end{abstract}
+
+\maketitle
+
+We model the Prairie View A\&M University campus traffic network using the node order
+\[
+(A,B,C,D,E,F,G),
+\]
+where
+\begin{align*}
+A&=\text{Main Entrance}, &
+B&=\text{Library Zone}, &
+C&=\text{Engineering Quad}, \\
+D&=\text{Residential Halls}, &
+E&=\text{Welcome Center}, &
+F&=\text{Athletics and Parking}, \\
+G&=\text{Student Center}.
+\end{align*}
+
+In this model, all traffic counts are measured in vehicles per 15 minutes. We assume Main Entrance \(A\) receives the greatest incoming traffic because it is the primary entrance to campus. We also assume that roads such as Owens Road have greater capacity than smaller internal campus connectors.
+
+Prove the following matrices with full computations for each multiplication. Specify a clear description of assumptions (traffic volume, capacities, etc.) if needed.\\
+
+\begin{enumerate}
+    \item Adjacency Matrix $M_1$– PVAMU Road Connectivity\\
+    A $7\times 7$ matrix representing which intersections connect. Use 1 if roads link the intersections (as shown above), otherwise 0.\\
+
+    The road connections are:
+    \[
+    A\leftrightarrow B,\quad A\leftrightarrow C,\quad A\leftrightarrow E,\quad
+    B\leftrightarrow D,\quad C\leftrightarrow D,\quad D\leftrightarrow F,\quad
+    E\leftrightarrow F,\quad E\leftrightarrow G,\quad F\leftrightarrow G.
+    \]
+
+    Therefore,
+    \[
+    M_1=
+    \begin{bmatrix}
+    0&1&1&0&1&0&0\\
+    1&0&0&1&0&0&0\\
+    1&0&0&1&0&0&0\\
+    0&1&1&0&0&1&0\\
+    1&0&0&0&0&1&1\\
+    0&0&0&1&1&0&1\\
+    0&0&0&0&1&1&0
+    \end{bmatrix}.
+    \]
+
+    \item Incoming Traffic Vector $M_2$\\
+    A $7\times 1$ vector showing estimated 15 minute incoming vehicle counts:
+    \begin{enumerate}    
+    \item[A:] Main Entrance – most vehicles enter here
+    \item[B:] Library Zone
+    \item[C:] Engineering Quad
+    \item[D:] Student Center Intersection
+    \item[E:] Residential Halls
+    \item[F:] Stadium Parking
+    \end{enumerate}
+    (Students may use realistic approximations in the range 80–300 cars.)
+
+    We choose the following reasonable traffic estimates:
+    \[
+    M_2=
+    \begin{bmatrix}
+    280\\
+    140\\
+    160\\
+    220\\
+    130\\
+    210\\
+    170
+    \end{bmatrix}.
+    \]
+
+    \item Transition Matrix $M_3$\\
+    A $7\times 7$ matrix where each row sums to 1, representing percentages of traffic sent to each neighboring location. Must match PVAMU road directions (two way or one way).\\
+
+    We use the transition matrix
+    \[
+    M_3=
+    \begin{bmatrix}
+    0&0.35&0.25&0&0.40&0&0\\
+    0.45&0&0&0.55&0&0&0\\
+    0.40&0&0&0.60&0&0&0\\
+    0&0.20&0.20&0&0&0.60&0\\
+    0.35&0&0&0&0&0.40&0.25\\
+    0&0&0&0.50&0.30&0&0.20\\
+    0&0&0&0&0.55&0.45&0
+    \end{bmatrix}.
+    \]
+    Each row sums to 1, and entries appear only where a road connection exists.
+
+    \item Actual Flow Vector $M_4=M_3 M_2$\\
+    This converts percentages into actual vehicle numbers.
+
+    Now compute:
+    \[
+    M_4=M_3M_2
+    =
+    \begin{bmatrix}
+    0&0.35&0.25&0&0.40&0&0\\
+    0.45&0&0&0.55&0&0&0\\
+    0.40&0&0&0.60&0&0&0\\
+    0&0.20&0.20&0&0&0.60&0\\
+    0.35&0&0&0&0&0.40&0.25\\
+    0&0&0&0.50&0.30&0&0.20\\
+    0&0&0&0&0.55&0.45&0
+    \end{bmatrix}
+    \begin{bmatrix}
+    280\\
+    140\\
+    160\\
+    220\\
+    130\\
+    210\\
+    170
+    \end{bmatrix}.
+    \]
+
+    Computing each entry,
+    \[
+    M_4=
+    \begin{bmatrix}
+    0(280)+0.35(140)+0.25(160)+0(220)+0.40(130)+0(210)+0(170)\\
+    0.45(280)+0(140)+0(160)+0.55(220)+0(130)+0(210)+0(170)\\
+    0.40(280)+0(140)+0(160)+0.60(220)+0(130)+0(210)+0(170)\\
+    0(280)+0.20(140)+0.20(160)+0(220)+0(130)+0.60(210)+0(170)\\
+    0.35(280)+0(140)+0(160)+0(220)+0(130)+0.40(210)+0.25(170)\\
+    0(280)+0(140)+0(160)+0.50(220)+0.30(130)+0(210)+0.20(170)\\
+    0(280)+0(140)+0(160)+0(220)+0.55(130)+0.45(210)+0(170)
+    \end{bmatrix}
+    \]
+    \[
+    =
+    \begin{bmatrix}
+    141\\
+    247\\
+    244\\
+    186\\
+    224.5\\
+    183\\
+    166
+    \end{bmatrix}.
+    \]
+
+    \item Road Capacity Matrix $M_5$\\
+    A symmetric $7\times 7$ matrix representing maximum vehicle throughput per 15 minutes on each road segment.
+    Capacities should reflect the wider vs narrower campus roads indicated on the PVAMU map
+    (e.g., Owens Rd. has higher capacity than internal connectors). \\
+
+    To keep the subtraction in the next step dimensionally consistent, we represent node-based capacity with a diagonal matrix:
+    \[
+    M_5=
+    \begin{bmatrix}
+    260&0&0&0&0&0&0\\
+    0&220&0&0&0&0&0\\
+    0&0&220&0&0&0&0\\
+    0&0&0&180&0&0&0\\
+    0&0&0&0&190&0&0\\
+    0&0&0&0&0&170&0\\
+    0&0&0&0&0&0&150
+    \end{bmatrix}.
+    \]
+
+    \item Congestion Pressure Matrix $M_6=M_4-M_5$\\
+    Positive values indicate over capacity segments.\\
+
+    Since \(M_4\) is a vector and \(M_5\) is a matrix, we first convert \(M_4\) into a diagonal matrix:
+    \[
+    \widetilde{M}_4=
+    \begin{bmatrix}
+    141&0&0&0&0&0&0\\
+    0&247&0&0&0&0&0\\
+    0&0&244&0&0&0&0\\
+    0&0&0&186&0&0&0\\
+    0&0&0&0&224.5&0&0\\
+    0&0&0&0&0&183&0\\
+    0&0&0&0&0&0&166
+    \end{bmatrix}.
+    \]
+
+    Then
+    \[
+    M_6=\widetilde{M}_4-M_5
+    =
+    \begin{bmatrix}
+    141&0&0&0&0&0&0\\
+    0&247&0&0&0&0&0\\
+    0&0&244&0&0&0&0\\
+    0&0&0&186&0&0&0\\
+    0&0&0&0&224.5&0&0\\
+    0&0&0&0&0&183&0\\
+    0&0&0&0&0&0&166
+    \end{bmatrix}
+    -
+    \begin{bmatrix}
+    260&0&0&0&0&0&0\\
+    0&220&0&0&0&0&0\\
+    0&0&220&0&0&0&0\\
+    0&0&0&180&0&0&0\\
+    0&0&0&0&190&0&0\\
+    0&0&0&0&0&170&0\\
+    0&0&0&0&0&0&150
+    \end{bmatrix}
+    \]
+    \[
+    =
+    \begin{bmatrix}
+    -119&0&0&0&0&0&0\\
+    0&27&0&0&0&0&0\\
+    0&0&24&0&0&0&0\\
+    0&0&0&6&0&0&0\\
+    0&0&0&0&34.5&0&0\\
+    0&0&0&0&0&13&0\\
+    0&0&0&0&0&0&16
+    \end{bmatrix}.
+    \]
+
+    \item Penalty Matrix $M_7$\\
+    This is a diagonal matrix reflecting severity with the following construction.
+    \begin{eqnarray*}
+        1 & = & \mbox{ within limit} \\
+        2 & = & \mbox{ over limit} \\
+        3 & = & \mbox{ severly over limit} 
+    \end{eqnarray*}
+    Use thresholds chosen by the student.\\
+
+    We choose the thresholds:
+    \[
+    \text{Penalty}=
+    \begin{cases}
+    1, & \text{if congestion } \leq 0,\\
+    2, & \text{if } 0<\text{congestion}\leq 20,\\
+    3, & \text{if congestion}>20.
+    \end{cases}
+    \]
+
+    Thus,
+    \[
+    M_7=
+    \begin{bmatrix}
+    1&0&0&0&0&0&0\\
+    0&3&0&0&0&0&0\\
+    0&0&3&0&0&0&0\\
+    0&0&0&2&0&0&0\\
+    0&0&0&0&3&0&0\\
+    0&0&0&0&0&2&0\\
+    0&0&0&0&0&0&2
+    \end{bmatrix}.
+    \]
+
+    \item Weighted Congestion Matrix $M_8=M_7 M_6$\\
+    This amplifies important congestion points.
+
+    Compute
+    \[
+    M_8=M_7M_6
+    =
+    \begin{bmatrix}
+    1&0&0&0&0&0&0\\
+    0&3&0&0&0&0&0\\
+    0&0&3&0&0&0&0\\
+    0&0&0&2&0&0&0\\
+    0&0&0&0&3&0&0\\
+    0&0&0&0&0&2&0\\
+    0&0&0&0&0&0&2
+    \end{bmatrix}
+    \begin{bmatrix}
+    -119&0&0&0&0&0&0\\
+    0&27&0&0&0&0&0\\
+    0&0&24&0&0&0&0\\
+    0&0&0&6&0&0&0\\
+    0&0&0&0&34.5&0&0\\
+    0&0&0&0&0&13&0\\
+    0&0&0&0&0&0&16
+    \end{bmatrix}
+    \]
+    \[
+    =
+    \begin{bmatrix}
+    -119&0&0&0&0&0&0\\
+    0&81&0&0&0&0&0\\
+    0&0&72&0&0&0&0\\
+    0&0&0&12&0&0&0\\
+    0&0&0&0&103.5&0&0\\
+    0&0&0&0&0&26&0\\
+    0&0&0&0&0&0&32
+    \end{bmatrix}.
+    \]
+
+    \item Distance Matrix $M_9$\\
+    A symmetric matrix giving approximate real distances between locations. Use distances approximated from the PVAMU map's relative geometry (e.g., Engineering $\leftrightarrow$ Student Center is shorter than Main Entrance $\leftrightarrow$ Student Center).\\
+
+    We choose the following approximate relative distance matrix:
+    \[
+    M_9=
+    \begin{bmatrix}
+    0&2&2&4&3&5&4\\
+    2&0&2&3&3&4&4\\
+    2&2&0&2&3&3&3\\
+    4&3&2&0&4&2&3\\
+    3&3&3&4&0&2&1\\
+    5&4&3&2&2&0&1\\
+    4&4&3&3&1&1&0
+    \end{bmatrix}.
+    \]
+
+    \item Final Traffic Stress Matrix $M_10=M_8M_9$\\
+    This matrix incorporates physical distance with congestion.
+
+    Compute
+    \[
+    M_{10}=M_8M_9=
+    \begin{bmatrix}
+    -119&0&0&0&0&0&0\\
+    0&81&0&0&0&0&0\\
+    0&0&72&0&0&0&0\\
+    0&0&0&12&0&0&0\\
+    0&0&0&0&103.5&0&0\\
+    0&0&0&0&0&26&0\\
+    0&0&0&0&0&0&32
+    \end{bmatrix}
+    \begin{bmatrix}
+    0&2&2&4&3&5&4\\
+    2&0&2&3&3&4&4\\
+    2&2&0&2&3&3&3\\
+    4&3&2&0&4&2&3\\
+    3&3&3&4&0&2&1\\
+    5&4&3&2&2&0&1\\
+    4&4&3&3&1&1&0
+    \end{bmatrix}
+    \]
+    \[
+    =
+    \begin{bmatrix}
+    0&-238&-238&-476&-357&-595&-476\\
+    162&0&162&243&243&324&324\\
+    144&144&0&144&216&216&216\\
+    48&36&24&0&48&24&36\\
+    310.5&310.5&310.5&414&0&207&103.5\\
+    130&104&78&52&52&0&26\\
+    128&128&96&96&32&32&0
+    \end{bmatrix}.
+    \]
+\end{enumerate}
+
+\vspace{1in}
+
+Write a 1-2 page report discussing:
+\begin{itemize}
+    \item Which PVAMU intersections experience highest traffic pressure
+    \item Which campus roads are bottlenecks
+    \item Whether residential--academic conduits (C $\leftrightarrow$ E, B $\leftrightarrow$ C) are overloaded
+    \item How stadium event traffic (F) affects flow
+    \item Recommendations such as: 
+    \begin{itemize}
+        \item rerouting
+        \item adding lanes
+        \item timed signals
+        \item building new connectors
+    \end{itemize}
+    \item Design a new traffic flow if you feel a better design is warranted.
+\end{itemize}
+
+\newpage
+
+\section*{Analysis}
+
+This traffic model provides an idea of how vehicle flow is distributed across the PVAMU campus and identifies key areas of high traffic. Based on the results from the congestion pressure matrix \(M_6\) and the weighted congestion matrix \(M_8\), the intersections that experience the highest traffic pressure are the Welcome Center (\(E\)), the Library Zone (\(B\)), and the Engineering Quad (\(C\)). Among these, \(E\) shows the largest congestion value, indicating that it acts as a central hub where traffic accumulates from multiple directions. This suggests that the Welcome Center is a critical point in the campus traffic network because multiple vehicle cross there throught the day. The primary bottlenecks in this system occur along the internal campus roads rather than at the main entrance. Although the Main Entrance (\(A\)) receives the highest incoming traffic, it does not exceed its capacity, as shown by its negative value in the congestion matrix. Instead, congestion forms after traffic is redistributed through the network. In particular, the connections involving \(B\), \(C\), and \(E\) experience the most strain, indicating that these roads serve as major conduits for vehicle movement across campus. The residential to academic connections, specifically between \(C\) and \(E\), as well as between \(B\) and \(C\), are clearly overloaded and full of traffic. These routes show positive congestion values, meaning that traffic demand exceeds their capacity. This result is reasonable because these areas connect major academic buildings with student housing, leading to frequent and heavy usage throughout the day. As a result, these pathways are critical to the overall efficiency of the campus traffic system. Traffic from the Athletics and Parking area (\(F\)) also plays a significant role in increasing congestion. Since \(F\) connects directly to \(D\), \(E\), and \(G\), large volumes of vehicles entering or leaving parking areas can quickly spread congestion throughout the network. This effect would likely be amplified during major events, such as football games, when traffic volumes are significantly higher than normal. In such cases, congestion near \(F\) can propagate to nearby intersections, especially \(E\), further increasing traffic pressure. Several improvements can be made to reduce congestion and improve traffic flow across campus. One recommendation is to reduce traffic away from heavily congested intersections such as \(E\), particularly during peak hours. Additionally, implementing timed traffic signals near \(B\), \(C\), and \(E\) could help regulate vehicle flow and reduce delays. Expanding road capacity or adding additional lanes near key bottlenecks may also improve throughput. Furthermore, during large events, a temporary traffic management plan could redirect vehicles to alternative routes, minimizing the impact of increased traffic near \(F\). A more efficient traffic design would aim to distribute vehicle flow more evenly across the network rather than concentrating it at a few central nodes. For example, adding new connector roads that bypass the Welcome Center could reduce the load on that intersection. By spreading traffic across multiple pathways, the overall stress on the system would decrease, leading to smoother and more efficient movement throughout campus.
+
+In conclusion, this linear algebra model successfully identifies key congestion points and provides a framework for analyzing and improving campus traffic flow. By addressing the overloaded intersections and redistributing traffic more effectively, PVAMU can enhance mobility, reduce delays, and create a more efficient transportation system.
+
+\end{document}
