@@ -14,22 +14,21 @@
 \section*{Overview}
 The goal of this project is to use the power of matrices and linear transformations to build a virtual kaleidoscope.  
 
-\begin{center}
-
 \section*{Virtual Kaleidoscopes}
-\vskip 0.125in
-\includegraphics[width = 2.5in]{start.jpg} \ \ \  \includegraphics[width = 2in]{finish.jpg}
+\begin{center}
+\includegraphics[width = 2in]{start.jpg}
+\includegraphics[width = 2in]{finish.jpg}
 \end{center}
 
 A physical kaleidoscope\footnote{There are many different kinds of kaleidoscopes.  This is just one example.} starts with a pie-shaped image like the one on the left above.  Two mirrors are held perpendicular to the paper with the image.  One mirror is held above the horizontal edge of the image and the other is held above the angled edge of the image.  The two edges and, thus, the two mirrors meet in a $60^{\circ}$ angle.  The horizontal mirror alone would produce the reflection on the left below.  The diagonal mirror alone would produce the reflection on the right below. 
 
 \begin{center}
-\includegraphics[width = 2.5in]{horizontal-reflection.jpg} \ \ \  \includegraphics[width = 2.5in]{diagonal-reflection.jpg}
+\includegraphics[width = 2in]{horizontal-reflection.jpg} \includegraphics[width = 2in]{diagonal-reflection.jpg}
 \end{center}
 
 \begin{center}
  \includegraphics[width = 4in]{finish.jpg}
-  \end{center}
+\end{center}
 Kaleidoscopic images like the one shown above are formed by reflections, reflections of reflections, reflections of reflections of reflections, and so on.  Each reflection produces a new pie-shaped piece (or sector) of the final image.  Why do you think there are only six pie-shaped pieces or sectors?
 
 We will use two-dimensional vectors $\vec x = \langle{x_1, x_2}\rangle$ to denote the coordinates of each point in the original image.  Mirrors flip or reflect images.  The same point whose original coordinates were denoted by the vector $\vec x = \langle{x_1, x_2}\rangle$ will now have coordinates denoted by a new vector $\vec y = \langle{y_1, y_2}\rangle$ after reflection.  
@@ -37,127 +36,96 @@ The new coordinates are determined by a linear transformation
 
 \begin{eqnarray*}
 y_1 &=& a_{11} x_1 + a_{12} x_2\\
-y_2 &=& a_{21} x_1 + a_{22} x_2\\
+y_2 &=& a_{21} x_1 + a_{22} x_2
 \end{eqnarray*}
 
 $$\left[{\begin{array}{c} y_1 \\ y_2 \\ \end{array}}\right] = \left[{\begin{array}{cc} a_{11} & a_{12} \\ a_{21} & a_{22} \\ \end{array}}\right] \left[{\begin{array}{c} x_1 \\ x_2 \\ \end{array}}\right]
 \quad {\rm or} \quad \vec y = A \vec x.$$
 
-\newpage
-
 \begin{enumerate}
-    \item Find the linear transformation that reflects an image by a mirror on the $x$-axis.  Express it as a matrix.  Write the matrix below.
+    \item Find a matrix capable of reflecting vectors across the x-axis. \\
+    
+    $\vec{x} = \langle{x{_1}},x{_2}\rangle$ denotes the coordinates of the original image. That same point is then multiplied by a matrix that reflects it across the x-axis. The linear transformation of the vector will then be denoted by 
+$\vec{y} = \langle{y_{1}},y{_2}\rangle$ after reflection. Below is the linear transformation of a given two-dimensional matrix.
+$$\left[\begin{array}{c}
+y_{1}\\ y_{2}\end{array} \right]=\left[\begin{array}{cc}
+a_{11} & a_{12} \\ a_{21} & a_{22} \end{array}\right]\left[\begin{array}{c} x_1 \\ x_2\end{array}\right]$$ or $\vec{y} = A\vec{x}$.\\
 
-$$\left[{\begin{array}{cc}
-\\
-\underline{\phantom{123456789}} & \underline{\phantom{123456789}} \\
-\\
-\underline{\phantom{123456789}} & \underline{\phantom{123456789}} \\
-\end{array}}\right].$$
+Now, to find a matrix $A$ such that when multiplied by a given vector, the given vector is then reflected across the $x$-axis, we must first know what exactly happens when a point or vector is reflected across the $x$-axis.\\
 
+When a point or vector is flipped across the $x$-axis, the sign of the $y$ component of the vector, or in this case $x_2$, changes from negative to positive or vice versa. This vector becomes $\vec{y} = \langle{y_1}, y_2\rangle$, where $y_1 = x_1$ and $y_2 =-x_2$,\\
 
-\vspace{.5in}
+Now, let us put the the vector in matrix notation in a fashion reminiscent of equation (1
 
-\item Find the linear transformation that rotates an image counterclockwise through an angle of $60^{\circ}$.  Express it as a matrix.  Write the matrix below.
+If we can consider $\vec{y} = \langle{x_1},-x_2\rangle$ to be equal to $$\left[\begin{array}{c} x_1 \\ -x_2\end{array}\right] = \left[\begin{array}{c} a_{11}x_1 + a_{12}x_2\\a_{21}x_1 + a_{22} x_2\end{array}\right].$$ 
 
-$$\left[{\begin{array}{cc}
-\\
-\underline{\phantom{123456789}} & \underline{\phantom{123456789}} \\
-\\
-\underline{\phantom{123456789}} & \underline{\phantom{123456789}} \\
-\end{array}}\right].$$
-
-\vspace{.5in}
-
-
-\item Find the linear transformation that reflects an image by a mirror on the diagonal line that makes an angle of $60^{\circ}$ with the $x$-axis.  Express it as a matrix.  Write the matrix below.
-
-$$\left[{\begin{array}{cc}
-\\
-\underline{\phantom{123456789}} & \underline{\phantom{123456789}} \\
-\\
-\underline{\phantom{123456789}} & \underline{\phantom{123456789}} \\
-\end{array}}\right].$$
-
-\vspace{8pt}
-
-
-\noindent Explain how you developed this matrix.
-\end{enumerate}
-\newpage
-\title{\begin{center}\huge MATH 3307: LINEAR ALGEBRA\\ 
-Project 3 Kaleidoscope\end{center}}
-\begin{center}
-\author{\LARGE Adrian Juarez and Austin Hedrick}
-\date{April 2026}\end{center}
-
-\section{\LARGE
- Find a matrix capable of reflecting vectors across the x-axis. }
-$\vec{x} = \langle{x{_1}},x{_2}\rangle$ denotes the coordinates of the original image. That same point is then multiplied by a matrix that reflects it across the x-axis. The linear transformation of the vector will then be denoted by 
-$\vec{y} = \langle{y_{1}},y{_2}\rangle$ after reflection. Below is the linear transformation of a given two-dimensional matrix. \\\\
-(1) $\left[\begin{array}{c}
-y_{1}\\ y_{2}\end{array} \right]=$$\left[\begin{array}{cc}
-a_{11} & a_{12} \\ a_{21} & a_{22} \end{array}\right]$$\left[\begin{array}{c} x_1 \\ x_2\end{array}\right]$ or $\vec{y} = A\vec{x}$.
-\\\\\\Now, to find a matrix "A" such that when multiplied by a given vector, the given vector is then reflected across the x-axis, we must first know what exactly happens when a point or vector is reflected across the x-axis.
-\\\\When a point or vector is flipped across the x-axis, the sign of the "y" component of the vector, or in this case $x_2$, changes from negative to positive or vice versa
-.\\\\This vector becomes $\vec{y} = \langle{y_1}, y_2\rangle$, where $y_1 = x_1$ and $y_2 =-x_2$,\\
-
-Now, let us put the the vector in matrix notation in a fashion reminiscent of equation (1).\\\\If we can consider $\vec{y} = \langle{x_1},-x_2\rangle$ to be equal to\\\\ $\left[\begin{array}{c} x_1 \\ -x_2\end{array}\right]$ = $\left[\begin{array}{c} a_{11}x_1 + a_{12}x_2\\a_{21}x_1 + a_{22} x_2\end{array}\right]$ \\\\\\\\\\
 Then it might be easier to observe the necessary values of $a_{11},a_{12},a_{21}$, and $a_{22}$.\\
 
-$x_1 = a_{11}x_1 + a_{12}x_2$;\\\\ therefore $a_{11} = 1$ and $a_{12} = 0$ to make this equation true. We then do the same to the second row equation:\\\\
-$-x_2 = a_{21}x_1 + a_{22}x_2$\\\\To make this equation true, $a_{21} = 0$ and $a_{22} = -1$.\\\\Given that matrix A = $\left[\begin{array}{cc}
-a_{11} & a_{12} \\ a_{21} & a_{22} \end{array}\right]$, that would mean that matrix A =$\left[\begin{array}{cc}
-1 & 0 \\ 0 & -1 \end{array}\right]$.\\\\This seems correct given that the magnitude of the vector multiplied by the reflection matrix is the same. For that reason, it comes as little surprise that the solution would look similar to the identity matrix.
-\\
-\begin{center}
+$x_1 = a_{11}x_1 + a_{12}x_2$; therefore $a_{11} = 1$ and $a_{12} = 0$ to make this equation true. We then do the same to the second row equation:\\
+
+$-x_2 = a_{21}x_1 + a_{22}x_2$\\
+
+To make this equation true, $a_{21} = 0$ and $a_{22} = -1$.\\
+
+Given that matrix $A = \left[\begin{array}{cc}
+a_{11} & a_{12} \\ a_{21} & a_{22} \end{array}\right]$, that would mean that matrix $A =\left[\begin{array}{cc}
+1 & 0 \\ 0 & -1 \end{array}\right]$.
+This seems correct given that the magnitude of the vector multiplied by the reflection matrix is the same. For that reason, it comes as little surprise that the solution would look similar to the identity matrix.\\
+
 To reflect a two-dimensional matrix across the x-axis, you can multiply by the following coefficient matrix:\\
-A = $\left[\begin{array}{cc}
-1 & 0 \\ 0 & -1 \end{array}\right]$ 
-\end{center}
+$$A = \left[\begin{array}{cc}
+1 & 0 \\ 0 & -1 \end{array}\right]$$
 
 
-\section{\LARGE Find a linear transformation that rotates an image counterclockwise at an  angle of 60 degrees}
- After researching matrices in a linear algebra book, our group found a matrix that could rotate a two-dimensional vector by a given degree:
 
- \begin{center}
-     A = $\left[\begin{array}{cc}
-\cos\varphi & -\sin\varphi \\ \sin\varphi & \cos\varphi \end{array}\right]$ end{center}
-\end{center}
-This matrix was discovered, not by us of course, by rotating orthogonal vectors, specifically, the unit vectors i and j or x and y by phi. Given that rotation preserves the distance of vectors about the origin, the unit vectors, with their magnitudes of 1 were a great place to start.
-\\\\After noting the location changes, they noted the position that the unit vector changed to after rotating some phi in column vector form. Rotation can sometimes be better understood as the whole of the axis rotating about the origin than the image from a Kaleidoscope rotating about a static axis.
-\\\\According to the project objective for this section the given angle of rotation is 60 degrees. That would mean that:\\\\A =  $\left[\begin{array}{cc}
+
+\item Find a linear transformation that rotates an image counterclockwise at an  angle of 60 degrees.
+
+After researching matrices in a linear algebra book, our group found a matrix that could rotate a two-dimensional vector by a given degree:
+     $$A = \left[\begin{array}{cc}
+\cos\phi & -\sin\phi \\ \sin\phi & \cos\phi \end{array}\right]$$
+
+This matrix was discovered, not by us of course, by rotating orthogonal vectors, specifically, the unit vectors $\vec{i}$ and $\vec{j}$ or $x$ and $y$ by $\phi$. Given that rotation preserves the distance of vectors about the origin, the unit vectors, with their magnitudes of 1 were a great place to start.\\
+
+After noting the location changes, they noted the position that the unit vector changed to after rotating some phi in column vector form. Rotation can sometimes be better understood as the whole of the axis rotating about the origin than the image from a Kaleidoscope rotating about a static axis.\\
+
+According to the project objective for this section the given angle of rotation is 60 degrees. That would mean that:
+
+$$A =  \left[\begin{array}{cc}
 \cos(60) & -\sin(60) \\ \sin(60) & \cos(60) \end{array}\right] = \left[\begin{array}{cc}
-\frac{1}{2} & -\frac{\sqrt{3}}{2} \\\frac{\sqrt{3}}{2}  & \frac{1}{2}\end{array}\right]$\\
-\\These values can be observed and recorded from the unit circle. \\\\
-\begin{center}
-    This is the matrix that can be used to rotate a matrix by 60 degrees:\\A = $\left[\begin{array}{cc}
-\frac{1}{2} & -\frac{\sqrt{3}}{2} \\\frac{\sqrt{3}}{2}  & \frac{1}{2}\end{array}\right]$
-\newpage
-\end{center}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\\frac{\sqrt{3}}{2}  & \frac{1}{2}\end{array}\right]$$
 
-\section{\LARGE Find a matrix that reflects across a diagonal line that makes a 60-degree angle with the x-axis.}
-This matrix seems to be a kind of chimera between reflection and rotation. Our first idea is that, in a sense, all objects reflected in a mirror are twice the distance from their respective reflection than the original image are to the mirror. \\\\
-It would stand to reason that if a mirror has traveled some distance, angular distance in this case, that the reflection itself would appear to travel twice the mirror's distance of travel.\\\\ Our first inclination was to use the rotation matrix utilized in section 2 and have the image rotate about the 2*60-degree axis. However, we soon realized that the image would not be a true reflection. If an arrow was pointing towards the reflection axis, the arrow should continue to point to the axis of reflection in its reflection, but if our group simply rotated the image 120 degrees the arrow would never flip as a true reflection would.\\\\
-The solution we proposed was to have the image initially flipped across the x-axis, then have it travel twice the distance that the mirror rotated. That way the a hypothetical arrow that was initially pointing at the "mirror vector" would continue to do so after being rotated.\\\\To achieve this, we multiplied the second column of the rotation matrix by -1, since we were fairly certain that this column acted as the "y" component of the vector given that its the only column that interacts with $x_2$. This we believe will flip the image across the x-axis as proposed in section 1.\\\\\\Then for the rotation, we observed rotation matrix would rotate an image by the given angle. With that in mind, given our hypothesis that for a hypothetical angled mirror that pivots about the origin, since every point reflected across the mirror is the same distance away from the mirror as its original, the angle between the images and the mirror must be congruent. This would suggest that the angle between the original image and its reflection is two times the angular distance between the mirror axis and the reflected images, so we used the rotation matrix and multiplied the angular variable by two.
+These values can be observed and recorded from the unit circle. \\
 
+This is the matrix that can be used to rotate a matrix by 60 degrees:
+$$A = \left[\begin{array}{cc}
+\frac{1}{2} & -\frac{\sqrt{3}}{2} \\\frac{\sqrt{3}}{2}  & \frac{1}{2}\end{array}\right]$$
 
- \begin{center}
-     A = $\left[\begin{array}{cc}
+\item Find a matrix that reflects across a diagonal line that makes a 60-degree angle with the x-axis.\\
+
+This matrix seems to be a kind of chimera between reflection and rotation. Our first idea is that, in a sense, all objects reflected in a mirror are twice the distance from their respective reflection than the original image are to the mirror. \\
+
+It would stand to reason that if a mirror has traveled some distance, angular distance in this case, that the reflection itself would appear to travel twice the mirror's distance of travel.\\
+
+Our first inclination was to use the rotation matrix utilized in section 2 and have the image rotate about the $2\times 60^\circ$ axis. However, we soon realized that the image would not be a true reflection. If an arrow was pointing towards the reflection axis, the arrow should continue to point to the axis of reflection in its reflection, but if our group simply rotated the image 120 degrees the arrow would never flip as a true reflection would.\\
+
+The solution we proposed was to have the image initially flipped across the $x$-axis, then have it travel twice the distance that the mirror rotated. That way the a hypothetical arrow that was initially pointing at the "mirror vector" would continue to do so after being rotated.\\
+
+To achieve this, we multiplied the second column of the rotation matrix by -1, since we were fairly certain that this column acted as the "y" component of the vector given that its the only column that interacts with $x_2$. This we believe will flip the image across the $x$-axis as proposed in section 1.\\
+
+Then for the rotation, we observed rotation matrix would rotate an image by the given angle. With that in mind, given our hypothesis that for a hypothetical angled mirror that pivots about the origin, since every point reflected across the mirror is the same distance away from the mirror as its original, the angle between the images and the mirror must be congruent. This would suggest that the angle between the original image and its reflection is two times the angular distance between the mirror axis and the reflected images, so we used the rotation matrix and multiplied the angular variable by two.
+
+$$A = \left[\begin{array}{cc}
 \cos\varphi & -\sin\varphi \\ \sin\varphi & \cos\varphi \end{array}\right] \rightarrow  \left[\begin{array}{cc}
 \cos\varphi & \sin\varphi \\ \sin\varphi & -\cos\varphi \end{array}\right]\rightarrow
 \left[\begin{array}{cc}
-\cos(2\varphi) & \sin(2\varphi) \\ \sin(2\varphi) & -\cos(2\varphi) \end{array}\right]
-$ \end{center} 
+\cos(2\varphi) & \sin(2\varphi) \\ \sin(2\varphi) & -\cos(2\varphi) \end{array}\right]$$ 
 
 This shows the path we took to devise a matrix that reflects a 2D image across a rotated axis at a given angle. 
 
-
-
- \begin{center}
  The final draft for the matrix was:
-     A = $\left[\begin{array}{cc}
-\cos(2\varphi) & \sin(2\varphi) \\ \sin(2\varphi) & -\cos(2\varphi) \end{array}\right]
-$ \end{center} 
+     $$A = \left[\begin{array}{cc}
+\cos(2\phi) & \sin(2\phi) \\ \sin(2\phi) & -\cos(2\phi) \end{array}\right]$$
 
+\end{enumerate}
 \end{document}
