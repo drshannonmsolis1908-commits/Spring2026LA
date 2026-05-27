@@ -8,16 +8,63 @@
 \usepackage{array}
 \usepackage{booktabs}
 
-\title{Project 3: Jennifer Guilbeaux}
-\author{Jennifer Guilbeaux}
+\title{Project 3: Ifeoluwa Oki}
+\author{Ifeoluwa Oki}
 
 
 \begin{document}
 \begin{abstract}
-    Project 3 over PVAMU traffic flow completed by Jennifer Guilbeaux.
+    Project 3 over PVAMU traffic flow completed by Ifeoluwa Oki.
 \end{abstract}
 
 \maketitle
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.75\linewidth]{PVmap.png}
+    \caption{Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+\section*{Overview}
+Prairie View A\&M University’s campus layout includes several major buildings, roads, and intersections, as shown. Based on these maps, we identify six real, high traffic intersections/regions: 
+\begin{enumerate}    
+    \item[A:] Main Entrance (Owens Rd \& FM 1098)
+    \item[B:] John B. Coleman Library Zone (near the central academic core)
+    \item[C:] Engineering Quad (Roy G. Perry Engineering Building area)
+    \item[D:] Residential Halls (University Village \& University College area)
+    \item[E:] PVAMU Welcome Center
+    \item[F:] Athletics \& Parking Zone (near Blackshear Stadium \& major parking lots)
+    \item[G:] Student Center Intersection (near Willie A. Tempton Sr. Student Center)
+    
+\end{enumerate}
+These locations represent hubs of student, faculty, and visitor movement, as validated by the PVAMU campus maps, which identify building clusters, major streets (such as L.W. Minor St., E.M. Norris, Anne Preston, and Owens Rd.), parking zones, and traffic-heavy corridors. \\
+
+\noindent \textbf{You will construct a complete traffic flow model using matrices that reflect real campus geography and road connectivity.}
+
+
+
+\section*{Campus Road Connectivity Used in the Model}
+
+Based on the PVAMU road grid and walking/vehicle corridors shown on the official maps (Owens Rd., L.W. Minor St., E.M. Norris St., Anne Preston St., internal connectors), the following are the primary feeder pathways in the PVAMU campus interior:
+
+\begin{itemize}
+    \item A (Main Entrance) $\leftrightarrow$ B (Library Zone)
+    \item A (Main Entrance) $\leftrightarrow$ E (Welcome Center)
+    \item A (Main Entrance) $\leftrightarrow$ C (Engineering Quad)
+    \item B (Library Zone) $\leftrightarrow$ D (Residential Halls)
+    \item C (Engineering Quad) $\leftrightarrow$ D (Residential Halls)
+    \item D (Residential Halls) $\leftrightarrow$ F (Athletics/Parking)
+    \item E (Welcome Center) $\leftrightarrow$ F (Athletics/Parking)
+    \item E (Welcome Center) $\leftrightarrow$ G (Student Center Intersection)
+    \item G (Student Center Intersection) $\leftrightarrow$ F (Athletics/Parking)
+\end{itemize}
+
+
+
+\section*{The Task}
+
+\textbf{You must build a complete linear algebra traffic model using at least 10 matrices, each representing a different structural, numerical, or analytic component of the PVAMU campus traffic system.}
 
 Prove the following matrices with full computations for each multiplication. Specify a clear description of assumptions (traffic volume, capacities, etc.) if needed.\\
 
